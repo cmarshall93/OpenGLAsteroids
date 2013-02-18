@@ -1,3 +1,5 @@
+import java.awt.Toolkit;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
@@ -6,8 +8,8 @@ import org.lwjgl.opengl.GL11;
 
 public class OpenGLAsteroids_Program {
 
-	public static final int WIN_HEIGHT = 900;
-	public static final int WIN_WIDTH = 1600;
+	public static final int WIN_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
+	public static final int WIN_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
 	
 	private GameEngine eng;
 

@@ -2,7 +2,7 @@ import org.lwjgl.opengl.GL11;
 
 
 public abstract class AsteroidsGameObject {
-
+	
 	protected AsteroidsGameVector position;
 	protected AsteroidsGameVector movementVector;
 	protected float rotation;
@@ -40,8 +40,8 @@ public abstract class AsteroidsGameObject {
 			}
 			//if acceleration is more than 1(speeding up)
 			else{
-				if(speed * a < 5){
-					speed *= speed * a;
+				if(speed * a < 10){
+					speed = speed * a;
 				}
 			}
 
@@ -52,7 +52,7 @@ public abstract class AsteroidsGameObject {
 						movementVector.getY() * a);
 			}
 			//otherwise calculate a direction vector and base on current rotation and use that to set the objects direction vector
-			else{
+			else if (speed * a < 10){
 			AsteroidsGameVector newMovementVector = new AsteroidsGameVector((float)(Math.sin(Math.toRadians(rotation)) * -1) * a,
 					(float)(Math.cos(Math.toRadians(rotation))) * a);
 
