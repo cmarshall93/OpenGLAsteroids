@@ -13,6 +13,8 @@ public class GameEngine {
 		objects = new ArrayList<AsteroidsGameObject>();
 		ship = new AsteroidsGameShip(OpenGLAsteroids_Program.WIN_WIDTH / 2, OpenGLAsteroids_Program.WIN_HEIGHT / 2);
 		objects.add(ship);
+		objects.add(new AsteroidsGameAsteroid());
+		objects.add(new AsteroidsGameAsteroid());
 	}
 	
 	public void startGame(){

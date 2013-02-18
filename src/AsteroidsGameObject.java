@@ -5,6 +5,7 @@ public abstract class AsteroidsGameObject {
 	
 	protected AsteroidsGameVector position;
 	protected AsteroidsGameVector movementVector;
+	protected AsteroidsGameVector[] boundingRectangle;
 	protected float rotation;
 	protected float speed;
 
@@ -64,6 +65,12 @@ public abstract class AsteroidsGameObject {
 
 		System.out.println(movementVector.getX() + " : " + movementVector.getY());
 	}
+	
+	public AsteroidsGameVector[] getBoundRectangle(){
+		return boundingRectangle;
+	}
+	
+	public abstract void checkCollisons(AsteroidsGameObject o);
 
 	public abstract void update();
 
