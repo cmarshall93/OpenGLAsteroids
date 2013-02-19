@@ -1,37 +1,30 @@
 import java.util.Random;
 
+import org.newdawn.slick.geom.Point;
+import org.newdawn.slick.geom.Polygon;
+import org.newdawn.slick.geom.Rectangle;
+
 
 public class AsteroidsGameAsteroid extends AsteroidsGameObject {
 
 	private Random random;
 	private float edgeSize;
-	
+
 	public AsteroidsGameAsteroid(){
 		super(0 , 0);
 		random = new Random();
-		edgeSize = random.nextInt(3) + 1;
-		model = new AsteroidsGameModel(	new AsteroidsGameVector[]{
-										new AsteroidsGameVector((edgeSize * -1) - random.nextFloat(),edgeSize + random.nextFloat()),
-										new AsteroidsGameVector((edgeSize * -1) - random.nextFloat(), 0 + random.nextFloat()),
-										new AsteroidsGameVector((edgeSize * -1) - random.nextFloat(), (edgeSize * -1) - random.nextFloat()),
-										new AsteroidsGameVector(0 + random.nextFloat(),(edgeSize * -1) - random.nextFloat()),
-										new AsteroidsGameVector(edgeSize + random.nextFloat(),(edgeSize * -1) - random.nextFloat()), 
-										new AsteroidsGameVector(edgeSize + random.nextFloat(), 0 + random.nextFloat()),
-										new AsteroidsGameVector(edgeSize + random.nextFloat(), edgeSize + random.nextFloat()),
-										new AsteroidsGameVector(0f + random.nextFloat(), edgeSize + random.nextFloat())
-			});
-		boundingRectangle = new AsteroidsGameVector[]{
-							new AsteroidsGameVector((edgeSize * -1) - random.nextFloat(),edgeSize + random.nextFloat()),
-							new AsteroidsGameVector((edgeSize * -1) - random.nextFloat(), (edgeSize * -1) - random.nextFloat()),
-							new AsteroidsGameVector(edgeSize + random.nextFloat(),(edgeSize * -1) - random.nextFloat()), 
-							new AsteroidsGameVector(edgeSize + random.nextFloat(), edgeSize + random.nextFloat())
-							
-		};
+		edgeSize = random.nextInt(20) + 1;
+		model = new Polygon();
+				model.addPoint((edgeSize * -1) - random.nextFloat(),edgeSize + random.nextFloat());
+				model.addPoint((edgeSize * -1) - random.nextFloat(), 0 + random.nextFloat());
+				model.addPoint((edgeSize * -1) - random.nextFloat(), (edgeSize * -1) - random.nextFloat());
+				model.addPoint(0 + random.nextFloat(),(edgeSize * -1) - random.nextFloat());
+				model.addPoint(edgeSize + random.nextFloat(),(edgeSize * -1) - random.nextFloat());
+				model.addPoint(edgeSize + random.nextFloat(), 0 + random.nextFloat());
+				model.addPoint(edgeSize + random.nextFloat(), edgeSize + random.nextFloat());
+				model.addPoint(0f + random.nextFloat(), edgeSize + random.nextFloat());
 		rotation = random.nextFloat() * 360;
 		setMovementVector(random.nextFloat() * 3);
-	}
-	
-	public void checkCollisons(AsteroidsGameObject o){
 	}
 
 	@Override
@@ -50,5 +43,5 @@ public class AsteroidsGameAsteroid extends AsteroidsGameObject {
 		}
 		position = new AsteroidsGameVector(position.getX() + movementVector.getX(), position.getY() + movementVector.getY());
 	}
-	
+
 }
