@@ -12,9 +12,9 @@ public class AsteroidsGameShip extends AsteroidsGameObject {
 			model.addPoint(0f,20f);
 			model.addPoint(-20f, -20f);
 			model.addPoint(20f, -20f);
-			//model.transform(Transform.createScaleTransform(100, 100));
 			
 			System.out.println(model.getCenterX() + " : " + model.getCenterY());
+			System.out.println(position.getX() + " :: " + position.getY());
 		movementVector = new AsteroidsGameVector(0f, 0f);
 		rotation = 90f;
 	}

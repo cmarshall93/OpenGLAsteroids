@@ -75,44 +75,6 @@ public abstract class AsteroidsGameObject {
 		destroyed = true;
 	}
 	public void checkCollisons(AsteroidsGameObject o){
-		//AsteroidsGameVector otherPosition = o.getPosition();
-		//AsteroidsGameVector[] otherRect = o.getBoundRectangle();
-		/**if(position.getX() + boundingRectangle[2].getX() >= otherPosition.getX() + otherRect[0].getX()
-				&& position.getX() + boundingRectangle[2].getX() <= otherPosition.getX() + otherRect[2].getX()){
-			if(position.getY() + boundingRectangle[2].getY() >= otherPosition.getY() - otherRect[0].getY()
-					&& position.getY() + boundingRectangle[2].getY() <= otherPosition.getY() + otherRect[1].getY()){
-				o.collide();
-				collide();
-				System.out.println(o.toString() + " :: " + toString());
-			}
-		}
-		if(position.getX() + boundingRectangle[1].getX() <= otherPosition.getX() + otherRect[3].getX()
-				&& position.getX() + boundingRectangle[1].getX() >= otherPosition.getX() + otherRect[0].getX()){
-			if(position.getY() + boundingRectangle[1].getY() >= otherPosition.getY() - otherRect[3].getY()
-					&& position.getY() + boundingRectangle[1].getY() <= otherPosition.getY() + otherRect[1].getY()){
-				o.collide();
-				collide();
-				System.out.println(o.toString() + " :: " + toString());
-			}
-		}
-		if(position.getX() + boundingRectangle[0].getX() <= otherPosition.getX() + otherRect[2].getX()
-				&& position.getX() + boundingRectangle[0].getX() >= otherPosition.getX() + otherRect[0].getX()){
-			if(position.getY() + boundingRectangle[0].getY() <= otherPosition.getY() + otherRect[2].getY()
-					&& position.getY() + boundingRectangle[0].getY() >= otherPosition.getY() - otherRect[0].getY()){
-				o.collide();
-				collide();
-				System.out.println(o.toString() + " :: " + toString());
-			}
-		}
-		if(position.getX() + boundingRectangle[3].getX() >= otherPosition.getX() + otherRect[1].getX()
-				&& position.getX() + boundingRectangle[3].getX() <= otherPosition.getX() + otherRect[2].getX()){
-			if(position.getY() + boundingRectangle[3].getY() <= otherPosition.getY() + otherRect[1].getY()
-					&& position.getY() + boundingRectangle[3].getY() >= otherPosition.getY() - otherRect[0].getY()){
-				o.collide();
-				collide();
-				System.out.println(o.toString() + " :: " + toString());
-			}
-		}**/
 		if(model.intersects(o.getModel())){
 			o.collide();
 			collide();
@@ -120,10 +82,10 @@ public abstract class AsteroidsGameObject {
 		}
 	}
 
-	private Shape getModel() {
+	private Polygon getModel() {
 		return model;
 	}
-
+	
 	private AsteroidsGameVector getPosition() {
 		return position;
 	}
@@ -137,7 +99,7 @@ public abstract class AsteroidsGameObject {
 			GL11.glRotatef(rotation, 0, 0, 1);
 			GL11.glColor3f(1f,1f,1f);
 			GL11.glBegin(GL11.GL_LINE_LOOP);
-			for(int i = 0; i + 1 < model.getPoints().length; i++){
+			for(int i = 0; i + 1 < model.getPoints().length; i+= 2){
 				GL11.glVertex2f(model.getPoints()[i], model.getPoints()[i + 1]);
 			}
 			GL11.glEnd();
