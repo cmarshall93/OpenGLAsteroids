@@ -10,7 +10,7 @@ public class OpenGLAsteroids_Program {
 
 	public static final int WIN_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
 	public static final int WIN_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
-	
+
 	private GameEngine eng;
 
 	private int frameCounter;
@@ -45,7 +45,7 @@ public class OpenGLAsteroids_Program {
 				eng.checkInput();
 				isCounting = true;
 			}
-			
+
 			eng.update();
 			eng.renderGame();
 
@@ -58,7 +58,6 @@ public class OpenGLAsteroids_Program {
 					isCounting = false;		
 				}
 			}
-
 		}
 		Display.destroy();
 	}

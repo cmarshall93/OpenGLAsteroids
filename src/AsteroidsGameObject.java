@@ -81,6 +81,9 @@ public abstract class AsteroidsGameObject {
 			//o.collide();
 			collide();
 			System.out.println(o.toString() + " :: " + toString());
+			if(this instanceof AsteroidsGameBullet && o instanceof AsteroidsGameAsteroid){
+				GameEngine.incrementScore();
+			}
 		}
 	}
 	
