@@ -12,7 +12,7 @@ public class AsteroidsGameShip extends AsteroidsGameObject {
 			model.addPoint(0f,20f);
 			model.addPoint(-20f, -20f);
 			model.addPoint(20f, -20f);
-			
+			model.setLocation(position.getX(), position.getY());
 			System.out.println(model.getCenterX() + " : " + model.getCenterY());
 			System.out.println(position.getX() + " :: " + position.getY());
 		movementVector = new AsteroidsGameVector(0f, 0f);
@@ -34,6 +34,7 @@ public class AsteroidsGameShip extends AsteroidsGameObject {
 			position = new AsteroidsGameVector( position.getX(), OpenGLAsteroids_Program.WIN_HEIGHT);
 		}
 		position = new AsteroidsGameVector(position.getX() + movementVector.getX(), position.getY() + movementVector.getY());
+		model.setLocation(position.getX(), position.getY());
 	}
 
 }

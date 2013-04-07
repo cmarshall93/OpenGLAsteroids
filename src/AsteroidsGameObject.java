@@ -2,6 +2,8 @@ import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.geom.Polygon;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.ShapeRenderer;
+import org.newdawn.slick.geom.Transform;
 
 
 public abstract class AsteroidsGameObject {
@@ -95,12 +97,11 @@ public abstract class AsteroidsGameObject {
 	public void draw() {
 		GL11.glPushMatrix();
 		{
-			GL11.glTranslatef(position.getX(), position.getY(), 0);
-			GL11.glRotatef(rotation, 0, 0, 1);
 			GL11.glColor3f(1f,1f,1f);
 			GL11.glBegin(GL11.GL_LINE_LOOP);
+			Shape tmpModel = model.transform(Transform.createRotateTransform((float)Math.toRadians(rotation),model.getCenterX(),model.getCenterY()));
 			for(int i = 0; i + 1 < model.getPoints().length; i+= 2){
-				GL11.glVertex2f(model.getPoints()[i], model.getPoints()[i + 1]);
+				GL11.glVertex2f(tmpModel.getPoints()[i], tmpModel.getPoints()[i + 1]);
 			}
 			GL11.glEnd();
 		}

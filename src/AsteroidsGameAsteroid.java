@@ -15,14 +15,15 @@ public class AsteroidsGameAsteroid extends AsteroidsGameObject {
 		random = new Random();
 		edgeSize = random.nextInt(20) + 1;
 		model = new Polygon();
-				model.addPoint((edgeSize * -1) - random.nextFloat(),edgeSize + random.nextFloat());
-				model.addPoint((edgeSize * -1) - random.nextFloat(), 0 + random.nextFloat());
-				model.addPoint((edgeSize * -1) - random.nextFloat(), (edgeSize * -1) - random.nextFloat());
-				model.addPoint(0 + random.nextFloat(),(edgeSize * -1) - random.nextFloat());
-				model.addPoint(edgeSize + random.nextFloat(),(edgeSize * -1) - random.nextFloat());
-				model.addPoint(edgeSize + random.nextFloat(), 0 + random.nextFloat());
-				model.addPoint(edgeSize + random.nextFloat(), edgeSize + random.nextFloat());
-				model.addPoint(0f + random.nextFloat(), edgeSize + random.nextFloat());
+				model.addPoint((edgeSize * -1) - (random.nextFloat() * 10),edgeSize + (random.nextFloat() * 10));
+				model.addPoint((edgeSize * -1) - (random.nextFloat() * 10), 0 + (random.nextFloat() * 10));
+				model.addPoint((edgeSize * -1) - (random.nextFloat() * 10), (edgeSize * -1) - (random.nextFloat() * 10));
+				model.addPoint(0 + (random.nextFloat() * 10),(edgeSize * -1) - (random.nextFloat() * 10));
+				model.addPoint(edgeSize + (random.nextFloat() * 10),(edgeSize * -1) - (random.nextFloat() * 10));
+				model.addPoint(edgeSize + (random.nextFloat() * 10), 0 + (random.nextFloat() * 10));
+				model.addPoint(edgeSize + (random.nextFloat() * 10), edgeSize + (random.nextFloat() * 10));
+				model.addPoint(0f + (random.nextFloat() * 10), edgeSize + (random.nextFloat() * 10));
+		model.setLocation(position.getX(), position.getY());
 		rotation = random.nextFloat() * 360;
 		setMovementVector(random.nextFloat() * 3);
 	}
@@ -42,6 +43,7 @@ public class AsteroidsGameAsteroid extends AsteroidsGameObject {
 			position = new AsteroidsGameVector( position.getX(), OpenGLAsteroids_Program.WIN_HEIGHT);
 		}
 		position = new AsteroidsGameVector(position.getX() + movementVector.getX(), position.getY() + movementVector.getY());
+		model.setLocation(position.getX(), position.getY());
 	}
 
 }

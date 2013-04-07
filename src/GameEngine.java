@@ -8,14 +8,15 @@ public class GameEngine {
 
 	private ArrayList<AsteroidsGameObject> objects;
 	private AsteroidsGameShip ship;
+	private long time;
 
 	public GameEngine(){
 		objects = new ArrayList<AsteroidsGameObject>();
 		ship = new AsteroidsGameShip(OpenGLAsteroids_Program.WIN_WIDTH / 2, OpenGLAsteroids_Program.WIN_HEIGHT / 2);
 		objects.add(ship);
-		//for(int i = 0; i < 19; i++){
-			//objects.add(new AsteroidsGameAsteroid());
-		//}
+		objects.add(new AsteroidsGameAsteroid());
+		time =  System.currentTimeMillis();
+		//objects.add(new AsteroidsGameAsteroid());
 	}
 
 	public void startGame(){
@@ -39,7 +40,11 @@ public class GameEngine {
 				destroyed.add(o);
 			}
 		}
-		
+		if(time + 2000 < System.currentTimeMillis()){
+			objects.add(new AsteroidsGameAsteroid());
+			time = System.currentTimeMillis();
+			System.out.println("asteroid created");
+		}
 		objects.removeAll(destroyed);
 	}
 
