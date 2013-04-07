@@ -7,11 +7,13 @@ import org.lwjgl.opengl.GL11;
 public class GameEngine {
 
 	private ArrayList<AsteroidsGameObject> objects;
+	private static ArrayList<AsteroidsGameObject> objectsToAdd; 
 	private AsteroidsGameShip ship;
 	private long time;
 
 	public GameEngine(){
 		objects = new ArrayList<AsteroidsGameObject>();
+		objectsToAdd = new ArrayList<AsteroidsGameObject>();
 		ship = new AsteroidsGameShip(OpenGLAsteroids_Program.WIN_WIDTH / 2, OpenGLAsteroids_Program.WIN_HEIGHT / 2);
 		objects.add(ship);
 		objects.add(new AsteroidsGameAsteroid());
@@ -40,12 +42,22 @@ public class GameEngine {
 				destroyed.add(o);
 			}
 		}
+		
+		objects.removeAll(destroyed);
+		
+		if(objectsToAdd.size() != 0){
+			for(AsteroidsGameObject o: objectsToAdd){
+				objects.add(o);
+			}
+			objectsToAdd.clear();
+		}
+		
 		if(time + 2000 < System.currentTimeMillis()){
 			objects.add(new AsteroidsGameAsteroid());
 			time = System.currentTimeMillis();
 			System.out.println("asteroid created");
 		}
-		objects.removeAll(destroyed);
+		
 	}
 
 	public void checkInput(){
@@ -61,6 +73,9 @@ public class GameEngine {
 		else if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)){
 			ship.rotate(-10);
 		}
+		else if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
+			ship.fireBullet();
+		}
 	}
 
 	public void renderGame(){
@@ -68,6 +83,12 @@ public class GameEngine {
 		GL11.glEnable( GL11.GL_TEXTURE_2D );
 		for(AsteroidsGameObject o: objects){
 			o.draw();
+		}
+	}
+	
+	public static void addGameObject(AsteroidsGameObject object){
+		if(objectsToAdd != null){
+			objectsToAdd.add(object);
 		}
 	}
 

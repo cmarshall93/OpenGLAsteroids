@@ -78,10 +78,19 @@ public abstract class AsteroidsGameObject {
 	}
 	public void checkCollisons(AsteroidsGameObject o){
 		if(model.intersects(o.getModel())){
-			o.collide();
+			//o.collide();
 			collide();
 			System.out.println(o.toString() + " :: " + toString());
 		}
+	}
+	
+	public void changeMovementVector(AsteroidsGameVector vector){
+		movementVector = vector;
+	}
+	
+	public void changePosition(AsteroidsGameVector vector){
+		position = vector;
+		model.setLocation(position.getX(), position.getY());
 	}
 
 	private Polygon getModel() {
